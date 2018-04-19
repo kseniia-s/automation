@@ -40,9 +40,14 @@ public class TestSuite {
         GoogleHomePage page = new GoogleHomePage(driver);
         page.fillSearchRequest("automation");
         GoogleResultsPage resultsPage = new GoogleResultsPage(driver);
-        Assert.assertTrue(resultsPage.isTextPresent("testautomationday.com"));
-
-
-
+        //Assert.assertTrue(resultsPage.isTextPresent("testautomationday.com")
+        for (int i = 1; i < 5; i++) {
+           if (!resultsPage.isTextPresent("testautomationday.com")) {
+               resultsPage.nextPage();
+           } else {
+               return;
+           }
+        }
+        Assert.fail("Domain not found.");
     }
 }
