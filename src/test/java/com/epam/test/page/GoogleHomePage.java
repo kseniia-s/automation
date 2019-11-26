@@ -1,23 +1,14 @@
 package com.epam.test.page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.WebElement;
 
-public class GoogleHomePage {
+public class GoogleHomePage extends BasePage{
 
-    private WebDriver webDriver;
+    @FindBy(how = How.NAME, using = "q")
     private WebElement searchField;
-
-    public GoogleHomePage(WebDriver driver) {
-        this.webDriver = driver;
-        initElements();
-    }
-
-    private void initElements() {
-        searchField = webDriver.findElement(By.name("q"));
-    }
 
     public void fillSearchRequest(String text) {
         searchField.sendKeys(text);
